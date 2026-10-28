@@ -23,7 +23,6 @@ def test_celsius_to_fahrenheit() -> None:
 
 
 def test_celsius_to_kelvin() -> None:
-    """0 °C = 273.15 K; абсолютный ноль −273.15 °C = 0 K."""
     assert convert(0, "c", "k") == pytest.approx(273.15)
     assert convert(-273.15, "c", "k") == pytest.approx(0.0)
 

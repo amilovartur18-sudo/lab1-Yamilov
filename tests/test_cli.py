@@ -8,7 +8,6 @@ from toolkit.errors import ToolkitError
 
 
 def test_help_exit_code_zero() -> None:
-    """--help завершается с кодом 0."""
     result = subprocess.run(
         [sys.executable, "-m", "toolkit", "--help"],
         capture_output=True,
@@ -20,13 +19,11 @@ def test_help_exit_code_zero() -> None:
 
 
 def test_calc_success_via_main() -> None:
-    """Успешный calc через main() возвращает 0."""
     code = main(["calc", "2+3*4"])
     assert code == 0
 
 
 def test_user_error_returns_code_2(capsys) -> None:
-    """Пользовательская ошибка → stderr и код 2."""
     code = main(["calc", "1/0"])
     captured = capsys.readouterr()
     assert code == 2
@@ -36,7 +33,6 @@ def test_user_error_returns_code_2(capsys) -> None:
 
 
 def test_kernel_has_no_input_print() -> None:
-    """Ядро не вызывает ввод/вывод — только считает и бросает исключения."""
     import ast
     from pathlib import Path
 
